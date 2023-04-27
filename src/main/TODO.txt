@@ -1,0 +1,4 @@
+Create CountryService in a package called Service.
+Replace "@Autowired private Repository.CountryRepository countryRepository;" with CountryService etc.
+Place @Autowired private Repository.CountryRepository countryRepository; in CountyService instead.
+

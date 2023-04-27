@@ -2,6 +2,11 @@ package Repository;
 
 import Entities.Country;
 import Repository.CountryRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -9,12 +14,15 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class CountryRepositoryImpl implements CountryRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
     public Country findById(Long id) {
@@ -33,6 +41,14 @@ public class CountryRepositoryImpl implements CountryRepository {
                 country.getName()
         );
     }
+
+    @Override
+    public List<Country> findAll() {
+        String sql = "SELECT * FROM Country";
+        RowMapper<Country> rowMapper = new CountryRowMapper();
+        return jdbcTemplate.query(sql, rowMapper);
+    }
+
 
     private class CountryRowMapper implements RowMapper<Country> {
         @Override

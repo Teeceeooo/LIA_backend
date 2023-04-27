@@ -2,6 +2,8 @@ package Entities;
 
 import Repository.CountryRepository;
 
+import java.util.List;
+
 public class Country implements CountryRepository {
 
     private Long id;
@@ -31,5 +33,10 @@ public class Country implements CountryRepository {
     @Override
     public void save(Country country) {
 
+    }
+
+    @Override
+    public List<Country> findAll() {
+        return null;
     }
 }
