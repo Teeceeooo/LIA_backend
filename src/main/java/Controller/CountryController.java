@@ -1,38 +1,37 @@
 package Controller;
 
 import Entities.Country;
-import Repository.CountryRepository;
+import Service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import Repository.CountryRepository;
-import java.net.URI;
-import java.net.URISyntaxException;
+
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/countries")
 public class CountryController {
 
     @Autowired
-    private Repository.CountryRepository countryRepository;
+    private CountryService countryService;
 
     @GetMapping("/getCountries")
     public List<Country> getCountries() {
-        return countryRepository.findAll();
+        return countryService.testing();
     }
 
-    @GetMapping("/findAll")
-    public List<Country> findAll() {
-        return countryRepository.findAll();
-    }
+    /*
 
     @GetMapping("/hello")
     public String sayHello() {
         return "Hello, world!";
     }
+
+
+    @GetMapping("/findAll")
+    public List<Country> findAll() {
+        return countryService.findAll();
+
+    }*/
 
     /*@GetMapping("/{id}")
     public ResponseEntity<Country> getCountryById(@PathVariable Long id) {

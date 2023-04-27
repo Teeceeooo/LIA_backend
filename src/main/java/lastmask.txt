@@ -1,0 +1,3 @@
+##Logik för hur processen ser ut.
+FRONTEND -> API -> SERVICE -> REPOSITORY -> SQL
+FRONTEND <- API -> SERVICE <- REPOSITORY <- SQL
