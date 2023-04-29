@@ -26,12 +26,11 @@ public class CountryRepositoryImpl implements CountryRepository {
 
     @Override
     public Country findById(Long id) {
-        Country country = jdbcTemplate.queryForObject(
+        return jdbcTemplate.queryForObject(
                 "SELECT * FROM Country WHERE id = ?",
                 new Object[]{id},
                 new CountryRowMapper()
         );
-        return country;
     }
 
     @Override

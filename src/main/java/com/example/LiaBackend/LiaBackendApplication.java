@@ -28,10 +28,8 @@ public class LiaBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//Country country = countryRepository.findById(3L);
-		//System.out.println(country.getName()); // Skriver ut namnet på landet med id 3
-		//countryRepository.findAll().forEach(country2 -> System.out.println(country2.getName()));
-
-
+		Country country = countryRepository.findById(3L);
+		System.out.println(country.getName()); // Skriver ut namnet på landet med id 3
+		countryRepository.findAll().forEach(country2 -> System.out.println(country2.getName()));
 	}
 }
