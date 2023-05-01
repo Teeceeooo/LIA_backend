@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/countries")
 public class CountryController {
@@ -16,10 +17,9 @@ public class CountryController {
 
     @GetMapping("/getCountries")
     public List<Country> getCountries() {
-        return countryService.testing();
+        return countryService.findAll();
     }
 
-    /*
 
     @GetMapping("/hello")
     public String sayHello() {
@@ -31,7 +31,12 @@ public class CountryController {
     public List<Country> findAll() {
         return countryService.findAll();
 
-    }*/
+    }
+
+    @GetMapping("/findAll2")
+    public List<Country> findAll2(@RequestParam(required = false) String search) {
+        return countryService.findAll2(search);
+    }
 
     /*@GetMapping("/{id}")
     public ResponseEntity<Country> getCountryById(@PathVariable Long id) {
