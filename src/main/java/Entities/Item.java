@@ -1,10 +1,13 @@
 package Entities;
 
+import Repository.ItemRepository;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Item")
-public class Item {
+public class Item implements ItemRepository {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -58,5 +61,10 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public List<Item> findAllItems() {
+        return null;
     }
 }

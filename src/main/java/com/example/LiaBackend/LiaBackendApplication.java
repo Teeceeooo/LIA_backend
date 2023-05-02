@@ -6,6 +6,7 @@ import Controller.CountryController;
 import Entities.Country;
 import Repository.CountryRepository;
 import Repository.CountryRepositoryImpl;
+import Repository.ItemRepository;
 import com.sun.tools.javac.Main;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +22,8 @@ public class LiaBackendApplication implements CommandLineRunner {
 	// Create CountryService. Replace this with CountryService, and place this in CountyService instead.
 	@Autowired
 	private CountryRepository countryRepository;
+	@Autowired
+	private ItemRepository itemRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LiaBackendApplication.class, args);
