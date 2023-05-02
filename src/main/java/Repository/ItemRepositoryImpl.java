@@ -29,7 +29,7 @@ public class ItemRepositoryImpl implements ItemRepository {
         return jdbcTemplate.query(sql, new ItemRowMapper(), searchParam);
     }
     private class ItemRowMapper implements RowMapper<Item> {
-        @Overridess
+        @Override
         public Item mapRow(ResultSet rs, int rowNum) throws SQLException {
             Item item = new Item();
             item.setId(rs.getLong("id"));
