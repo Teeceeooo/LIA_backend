@@ -67,4 +67,9 @@ public class Item implements ItemRepository {
     public List<Item> findAllItems() {
         return null;
     }
+
+    @Override
+    public List<Item> findAllItems2(String searchText) {
+        return null;
+    }
 }

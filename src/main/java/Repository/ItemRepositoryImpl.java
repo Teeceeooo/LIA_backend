@@ -1,5 +1,4 @@
 package Repository;
-import Entities.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -23,14 +22,14 @@ public class ItemRepositoryImpl implements ItemRepository {
         RowMapper<Item> rowMapper = new ItemRowMapper();
         return jdbcTemplate.query(sql, rowMapper);
     }
- /*   @Override
-    public List<Item> findAllItems2() {
+    @Override
+    public List<Item> findAllItems2(String searchText) {
         String sql = "SELECT * FROM Item WHERE LOWER(name) LIKE ?";
-        String searchParam = search.toLowerCase() + "%";
+        String searchParam = searchText != null ? "%" + searchText.toLowerCase() + "%" : "";
         return jdbcTemplate.query(sql, new ItemRowMapper(), searchParam);
-    }*/
+    }
     private class ItemRowMapper implements RowMapper<Item> {
-        @Override
+        @Overridess
         public Item mapRow(ResultSet rs, int rowNum) throws SQLException {
             Item item = new Item();
             item.setId(rs.getLong("id"));

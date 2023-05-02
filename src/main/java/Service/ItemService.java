@@ -16,4 +16,7 @@ public class ItemService {
     public List<Item> findAllItems() {
         return itemRepository.findAllItems();
     }
+    public List<Item> findAllItems2(String searchText) {
+        return itemRepository.findAllItems2(searchText);
+    }
 }

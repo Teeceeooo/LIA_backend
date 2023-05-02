@@ -19,4 +19,9 @@ public class ItemController {
     public List<Item> getItems() {
         return itemService.findAllItems();
     }
+
+    @GetMapping("/getItems2")
+    public List<Item> getAll(@RequestParam(required = false) String search) {
+        return itemService.findAllItems2(search);
+    }
 }
