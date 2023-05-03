@@ -1,8 +1,6 @@
 package Controller;
 
-import Entities.Country;
 import Entities.Item;
-import Service.CountryService;
 import Service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +13,8 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
+    // list DTO instead of list Item
+    // In service convert DTO
     @GetMapping("/getItems")
     public List<Item> getItems() {
         return itemService.findAllItems();
