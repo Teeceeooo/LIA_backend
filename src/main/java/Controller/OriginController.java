@@ -1,5 +1,6 @@
 package Controller;
 
+import DTO.OriginDTO;
 import Entities.Country;
 import Entities.Origin;
 import Service.CountryService;
@@ -17,7 +18,7 @@ public class OriginController {
     private OriginService originService;
 
     @GetMapping("/getOrigin")
-    public List<Origin> getCountries() {
-        return originService.testing();
+    public List<OriginDTO> getOrigin() {
+        return originService.getAllDTOOrigin();
     }
 }

@@ -1,6 +1,7 @@
 package Repository;
 
 
+import DTO.OriginDTO;
 import Entities.Origin;
 import org.springframework.stereotype.Repository;
 
@@ -14,4 +15,5 @@ public interface OriginRepository {
 
     List<Origin> findAll();
 
+    List<OriginDTO> findAllDTO();
 }

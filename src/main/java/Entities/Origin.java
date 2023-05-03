@@ -1,8 +1,11 @@
 package Entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "Origin")
 public class Origin {
 
@@ -12,8 +15,6 @@ public class Origin {
 
     private String name;
     private String description;
-
-    // Konstruktorer, getters och setters
 
     public Origin() {
     }
@@ -46,8 +47,6 @@ public class Origin {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    // Övriga metoder
 
     @Override
     public String toString() {

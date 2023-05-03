@@ -1,5 +1,6 @@
 package Repository;
 
+import DTO.OriginDTO;
 import Entities.Origin;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,23 @@ public class OriginRepositoryImpl implements OriginRepository {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
+    @Override
+    public List<OriginDTO> findAllDTO() {
+        String sql = "SELECT id, name, description FROM Origin";
+        RowMapper<OriginDTO> rowMapper = new OriginDTORowMapper();
+        return jdbcTemplate.query(sql, rowMapper);
+    }
+
+    private class OriginDTORowMapper implements RowMapper<OriginDTO> {
+        @Override
+        public OriginDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+            OriginDTO originDTO = new OriginDTO();
+            //originDTO.setId(rs.getLong("id"));
+            originDTO.setName(rs.getString("name"));
+            originDTO.setDescription(rs.getString("description"));
+            return originDTO;
+        }
+    }
 
     private class OriginRowMapper implements RowMapper<Origin> {
         @Override
