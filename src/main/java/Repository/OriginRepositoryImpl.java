@@ -52,9 +52,9 @@ public class OriginRepositoryImpl implements OriginRepository {
     }
 
     @Override
-    public void postOriginDTOtoDatabase(OriginDTO originDTO) {
-        String originDTOName = originDTO.getName();
-        String originDTODescription = originDTO.getDescription();
+    public void postOriginDTOtoDatabase(Origin origin) {
+        String originDTOName = origin.getName();
+        String originDTODescription = origin.getDescription();
         String sql = "INSERT INTO Origin (name, description) VALUES (?, ?)";
         jdbcTemplate.update(sql, originDTOName, originDTODescription);
     }

@@ -4,6 +4,7 @@ import DTO.OriginDTO;
 import Entities.Country;
 import Entities.Origin;
 import Repository.OriginRepository;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,10 +33,10 @@ public class OriginService {
     }
 
     public void createOrigin(OriginDTO originDTO){
-       OriginDTO newOriginDTO = new OriginDTO();
-       newOriginDTO.setName(originDTO.getName());
-       newOriginDTO.setDescription(originDTO.getDescription());
-        originRepository.postOriginDTOtoDatabase(newOriginDTO);
+        Origin origin = new Origin();
+        origin.setName(originDTO.getName());
+        origin.setDescription(originDTO.getDescription());
+        originRepository.postOriginDTOtoDatabase(origin);
     }
 
 

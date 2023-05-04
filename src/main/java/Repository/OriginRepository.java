@@ -17,5 +17,5 @@ public interface OriginRepository {
 
     List<OriginDTO> findAllDTO();
 
-    void postOriginDTOtoDatabase(OriginDTO originDTO);
+    void postOriginDTOtoDatabase(Origin origin);
 }
