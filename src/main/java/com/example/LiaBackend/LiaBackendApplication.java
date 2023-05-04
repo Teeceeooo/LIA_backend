@@ -16,7 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"Repository", "Controller", "Entities","Player", "Service"})
+@ComponentScan(basePackages = {"Repository", "Controller", "Entities","Player", "Service", "DTO"})
 public class LiaBackendApplication implements CommandLineRunner {
 
 	// Create CountryService. Replace this with CountryService, and place this in CountyService instead.

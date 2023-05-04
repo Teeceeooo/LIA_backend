@@ -31,5 +31,14 @@ public class OriginService {
         return originDTO;
     }
 
+    public void createOrigin(OriginDTO originDTO){
+       OriginDTO newOriginDTO = new OriginDTO();
+       newOriginDTO.setName(originDTO.getName());
+       newOriginDTO.setDescription(originDTO.getDescription());
+        originRepository.postOriginDTOtoDatabase(newOriginDTO);
+    }
+
+
+
 
 }

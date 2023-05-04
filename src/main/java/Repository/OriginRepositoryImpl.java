@@ -51,6 +51,14 @@ public class OriginRepositoryImpl implements OriginRepository {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
+    @Override
+    public void postOriginDTOtoDatabase(OriginDTO originDTO) {
+        String originDTOName = originDTO.getName();
+        String originDTODescription = originDTO.getDescription();
+        String sql = "INSERT INTO Origin (name, description) VALUES (?, ?)";
+        jdbcTemplate.update(sql, originDTOName, originDTODescription);
+    }
+
     private class OriginDTORowMapper implements RowMapper<OriginDTO> {
         @Override
         public OriginDTO mapRow(ResultSet rs, int rowNum) throws SQLException {

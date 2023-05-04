@@ -21,4 +21,11 @@ public class OriginController {
     public List<OriginDTO> getOrigin() {
         return originService.getAllDTOOrigin();
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/createOrigin")
+    public void createOrigin(@RequestBody OriginDTO originDTO) {
+        originService.createOrigin(originDTO);
+
+    }
 }
