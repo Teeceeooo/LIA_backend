@@ -26,6 +26,5 @@ public class OriginController {
     @PostMapping("/createOrigin")
     public void createOrigin(@RequestBody OriginDTO originDTO) {
         originService.createOrigin(originDTO);
-
     }
 }

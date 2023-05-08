@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ItemService {
+public class AuthService {
 
     @Autowired
     private Repository.ItemRepository itemRepository;
@@ -18,7 +18,7 @@ public class ItemService {
     public List<Item> findAllItems() {
         return itemRepository.findAllItems();
     }
-    public List<Item> findAllItems2(String searchText) {
+    public List<Item> findAllUser(String searchText) {
         return itemRepository.findAllItems2(searchText);
     }
 

@@ -1,4 +1,5 @@
 package Repository;
+import Entities.Origin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,6 +29,16 @@ public class ItemRepositoryImpl implements ItemRepository {
         String searchParam = searchText != null ? "%" + searchText.toLowerCase() + "%" : "";
         return jdbcTemplate.query(sql, new ItemRowMapper(), searchParam);
     }
+
+    @Override
+    public void postItemDTOtoDatabase(Item item) {
+        String itemDTOName = item.getName();
+        String itemDTODescription = item.getDescription();
+        String sql = "INSERT INTO Item (name, description) VALUES (?, ?)";
+        jdbcTemplate.update(sql, itemDTOName, itemDTODescription);
+    }
+
+
     private class ItemRowMapper implements RowMapper<Item> {
         @Override
         public Item mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -38,5 +49,4 @@ public class ItemRepositoryImpl implements ItemRepository {
             return item;
         }
     }
-
 }

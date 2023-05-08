@@ -54,6 +54,14 @@ public class TraitRepositoryImpl implements TraitRepository {
         return jdbcTemplate.query(sql, new TraitRowMapper(), searchParam);
     }
 
+    @Override
+    public void postTraitDTOtoDatabase(Trait trait) {
+        String traitDTOName = trait.getName();
+        String traitDTODescription = trait.getDescription();
+        String sql = "INSERT INTO Trait (name, description) VALUES (?, ?)";
+        jdbcTemplate.update(sql, traitDTOName, traitDTODescription);
+    }
+
 
     private class TraitRowMapper implements RowMapper<Trait> {
         @Override
