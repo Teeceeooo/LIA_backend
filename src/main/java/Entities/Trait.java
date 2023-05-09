@@ -3,7 +3,7 @@ package Entities;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.persistence.*;
-//JDBC | JDBC TEMPLATE -> Serive -> API -> FRONTEND
+//JDBC | JDBC TEMPLATE -> Service -> API -> FRONTEND
 @Entity
 @Table(name = "Class")
 public class Trait {

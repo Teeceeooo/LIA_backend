@@ -1,16 +1,14 @@
 package Entities;
-
-import lombok.Data;
-
+import org.springframework.jdbc.core.JdbcTemplate;
 import javax.persistence.*;
 
 @Entity
-@Data
 @Table(name = "User")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     private String username;
