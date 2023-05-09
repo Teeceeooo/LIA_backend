@@ -27,4 +27,10 @@ public class OriginController {
     public void createOrigin(@RequestBody OriginDTO originDTO) {
         originService.createOrigin(originDTO);
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/updateOrigin/{name}")
+    public void updateOrigin(@PathVariable String name, @RequestBody OriginDTO originDTO) {
+        originService.updateOrigin(name, originDTO);
+    }
 }

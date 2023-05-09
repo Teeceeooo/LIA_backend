@@ -39,4 +39,9 @@ public class Country implements CountryRepository {
     public List<Country> findAll() {
         return null;
     }
+
+    @Override
+    public List<Country> findAll2(String search) {
+        return null;
+    }
 }

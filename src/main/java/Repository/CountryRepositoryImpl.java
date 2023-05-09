@@ -42,6 +42,13 @@ public class CountryRepositoryImpl implements CountryRepository {
         RowMapper<Country> rowMapper = new CountryRowMapper();
         return jdbcTemplate.query(sql, rowMapper);
     }
+    // test backend->frontend typeahead
+    @Override
+    public List<Country> findAll2(String search) {
+        String sql = "SELECT * FROM Country WHERE LOWER(name) LIKE ?";
+        String searchParam = search.toLowerCase() + "%";
+        return jdbcTemplate.query(sql, new CountryRowMapper(), searchParam);
+    }
 
 
     private class CountryRowMapper implements RowMapper<Country> {

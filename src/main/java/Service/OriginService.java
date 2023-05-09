@@ -1,10 +1,8 @@
 package Service;
 
 import DTO.OriginDTO;
-import Entities.Country;
 import Entities.Origin;
 import Repository.OriginRepository;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +37,7 @@ public class OriginService {
         originRepository.postOriginDTOtoDatabase(origin);
     }
 
-
-
-
+    public void updateOrigin(String name, OriginDTO originDTO) {
+        originRepository.updateOriginDTOtoDatabase(name, originDTO);
+    }
 }

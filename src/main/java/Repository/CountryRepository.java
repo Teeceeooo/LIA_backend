@@ -13,4 +13,6 @@ public interface CountryRepository {
 
     List<Country> findAll();
 
+    // test backend->frontend typeahead
+    List<Country> findAll2(String search);
 }
