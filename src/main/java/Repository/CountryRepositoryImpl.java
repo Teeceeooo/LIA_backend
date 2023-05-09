@@ -2,10 +2,6 @@ package Repository;
 
 import Entities.Country;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -25,12 +21,11 @@ public class CountryRepositoryImpl implements CountryRepository {
 
     @Override
     public Country findById(Long id) {
-        Country country = jdbcTemplate.queryForObject(
+        return jdbcTemplate.queryForObject(
                 "SELECT * FROM Country WHERE id = ?",
                 new Object[]{id},
                 new CountryRowMapper()
         );
-        return country;
     }
 
     @Override

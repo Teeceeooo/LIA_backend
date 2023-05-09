@@ -1,8 +1,11 @@
 package Entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 @Entity
+@Data
 @Table(name = "Origin")
 public class Origin {
 
@@ -10,13 +13,8 @@ public class Origin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
     private String name;
-
-    @Column(name = "description", nullable = false)
     private String description;
-
-    // Konstruktorer, getters och setters
 
     public Origin() {
     }
@@ -49,8 +47,6 @@ public class Origin {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    // Övriga metoder
 
     @Override
     public String toString() {

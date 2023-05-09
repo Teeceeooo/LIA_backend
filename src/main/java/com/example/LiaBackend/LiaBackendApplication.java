@@ -6,6 +6,7 @@ import Controller.CountryController;
 import Entities.Country;
 import Repository.CountryRepository;
 import Repository.CountryRepositoryImpl;
+import Repository.ItemRepository;
 import com.sun.tools.javac.Main;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,12 +16,14 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"Repository", "Controller", "Entities","Player", "Service"})
+@ComponentScan(basePackages = {"Repository", "Controller", "Entities","Player", "Service", "DTO"})
 public class LiaBackendApplication implements CommandLineRunner {
 
 	// Create CountryService. Replace this with CountryService, and place this in CountyService instead.
 	@Autowired
 	private CountryRepository countryRepository;
+	@Autowired
+	private ItemRepository itemRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LiaBackendApplication.class, args);
@@ -31,7 +34,5 @@ public class LiaBackendApplication implements CommandLineRunner {
 		//Country country = countryRepository.findById(3L);
 		//System.out.println(country.getName()); // Skriver ut namnet på landet med id 3
 		//countryRepository.findAll().forEach(country2 -> System.out.println(country2.getName()));
-
-
 	}
 }
