@@ -1,5 +1,7 @@
 package Controller;
 
+import DTO.OriginDTO;
+import DTO.TraitDTO;
 import Entities.Trait;
 import Service.TraitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v1/traits")
+@RequestMapping("/api/v1/trait")
 public class TraitController {
 
     @Autowired
@@ -23,5 +25,11 @@ public class TraitController {
     @GetMapping("/getTraits2")
     public List<Trait> getAll(@RequestParam(required = false) String search) {
         return traitService.getTrait2(search);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/createTrait")
+    public void createTrait(@RequestBody TraitDTO traitDTO) {
+        traitService.createTrait(traitDTO);
     }
 }

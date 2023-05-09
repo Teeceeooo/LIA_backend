@@ -3,6 +3,7 @@ package Controller;
 import DTO.ItemDTO;
 import DTO.OriginDTO;
 import Entities.Item;
+import Entities.User;
 import Service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -10,26 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/v1/item")
-public class ItemController {
+public class AuthController {
 
     @Autowired
-    private ItemService itemService;
+    private AuthService authService;
 
     // list DTO instead of list Item
     // In service convert DTO
-    @GetMapping("/getItems")
-    public List<Item> getItems() {
-        return itemService.findAllItems();
+    @GetMapping("/getUsers")
+    public List<User> getUsers() {
+        return authService.findAllUsers();
     }
 
-    @GetMapping("/getItems2")
-    public List<Item> getAll(@RequestParam(required = false) String search) {
-        return itemService.findAllItems2(search);
-    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/createItem")
-    public void createItem(@RequestBody ItemDTO itemDTO) {
-        itemService.createItem(itemDTO);
+    public void validateLogin(@RequestBody User user) {
+        authService.checkUser(user);
     }
 }
