@@ -21,12 +21,16 @@ public class OriginRepositoryImpl implements OriginRepository {
     private EntityManager entityManager;
 
     @Override
-    public Origin findById(Long id) {
+    public Origin findById2(Long id) {
         return jdbcTemplate.queryForObject(
                 "SELECT * FROM Origin WHERE id = ?",
                 new Object[]{id},
                 new OriginRowMapper()
         );
+    }
+    @Override
+    public Origin findById(Long id) {
+        return entityManager.find(Origin.class, id);
     }
 
     @Override
@@ -53,10 +57,21 @@ public class OriginRepositoryImpl implements OriginRepository {
 
     @Override
     public void postOriginDTOtoDatabase(Origin origin) {
+        Long originDTOID = origin.getId();
         String originDTOName = origin.getName();
         String originDTODescription = origin.getDescription();
-        String sql = "INSERT INTO Origin (name, description) VALUES (?, ?)";
-        jdbcTemplate.update(sql, originDTOName, originDTODescription);
+        String sql = "INSERT INTO Origin (id, name, description) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, originDTOID, originDTOName, originDTODescription);
+    }
+
+    @Override
+    public void updateOriginDTOtoDatabase(String name, OriginDTO originDTO) {
+        String sql = "UPDATE Origin SET name = ?, description = ? WHERE name = ?";
+        System.out.println("Updating origin with name: " + name);
+        System.out.println("New origin name: " + originDTO.getName());
+        System.out.println("New origin description: " + originDTO.getDescription());
+        int rowsUpdated = jdbcTemplate.update(sql, originDTO.getName(), originDTO.getDescription(), name);
+        System.out.println(rowsUpdated + " row(s) updated");
     }
 
     private class OriginDTORowMapper implements RowMapper<OriginDTO> {

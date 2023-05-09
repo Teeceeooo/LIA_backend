@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public interface OriginRepository {
 
+    Origin findById2(Long id);
+
     Origin findById(Long id);
     void save(Origin origin);
 
@@ -18,4 +20,5 @@ public interface OriginRepository {
     List<OriginDTO> findAllDTO();
 
     void postOriginDTOtoDatabase(Origin origin);
+    void updateOriginDTOtoDatabase(String name, OriginDTO originDTO);
 }
