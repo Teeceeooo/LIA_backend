@@ -1,4 +1,6 @@
 package Repository;
+import DTO.ItemDTO;
+import DTO.OriginDTO;
 import Entities.Origin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,6 +38,22 @@ public class ItemRepositoryImpl implements ItemRepository {
         String itemDTODescription = item.getDescription();
         String sql = "INSERT INTO Item (name, description) VALUES (?, ?)";
         jdbcTemplate.update(sql, itemDTOName, itemDTODescription);
+    }
+    @Override
+    public void updateItemDTOtoDatabase(String name, ItemDTO itemDTO) {
+        String sql = "UPDATE Item SET name = ?, description = ? WHERE name = ?";
+        System.out.println("Updating item with name: " + name);
+        System.out.println("New item name: " + itemDTO.getName());
+        System.out.println("New item description: " + itemDTO.getDescription());
+        int rowsUpdated = jdbcTemplate.update(sql, itemDTO.getName(), itemDTO.getDescription(), name);
+        System.out.println(rowsUpdated + " row(s) updated");
+    }
+
+    @Override
+    public void deleteItemDTOfromDatabase(String name) {
+        String sql = "DELETE FROM Item WHERE name = ?";
+        jdbcTemplate.update(sql, name);
+        System.out.println("Deleting " + name);
     }
 
 

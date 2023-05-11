@@ -28,4 +28,11 @@ public class ItemService {
         item.setDescription(itemDTO.getDescription());
         itemRepository.postItemDTOtoDatabase(item);
     }
+    public void updateItem(String name, ItemDTO itemDTO) {
+        itemRepository.updateItemDTOtoDatabase(name, itemDTO);
+    }
+
+    public void deleteItem(String name) {
+        itemRepository.deleteItemDTOfromDatabase(name);
+    }
 }
