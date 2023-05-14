@@ -1,5 +1,6 @@
 package Controller;
 
+import DTO.ItemDTO;
 import DTO.OriginDTO;
 import DTO.TraitDTO;
 import Entities.Trait;
