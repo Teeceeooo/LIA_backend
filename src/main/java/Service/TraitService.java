@@ -1,5 +1,6 @@
 package Service;
 
+import DTO.ItemDTO;
 import DTO.TraitDTO;
 import Entities.Origin;
 import Entities.Trait;
@@ -26,5 +27,12 @@ public class TraitService {
         trait.setName(traitDTO.getName());
         trait.setDescription(traitDTO.getDescription());
         traitRepository.postTraitDTOtoDatabase(trait);
+    }
+    public void updateTrait(String name, TraitDTO traitDTO) {
+        traitRepository.updateTraitDTOtoDatabase(name, traitDTO);
+    }
+
+    public void deleteTrait(String name) {
+        traitRepository.deleteTraitDTOfromDatabase(name);
     }
 }

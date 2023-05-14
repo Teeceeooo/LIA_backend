@@ -33,4 +33,10 @@ public class OriginController {
     public void updateOrigin(@PathVariable String name, @RequestBody OriginDTO originDTO) {
         originService.updateOrigin(name, originDTO);
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/deleteOrigin/{name}")
+    public void deleteOrigin(@PathVariable String name) {
+        originService.deleteOrigin(name);
+    }
 }

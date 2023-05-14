@@ -21,4 +21,5 @@ public interface OriginRepository {
 
     void postOriginDTOtoDatabase(Origin origin);
     void updateOriginDTOtoDatabase(String name, OriginDTO originDTO);
+    void deleteOriginDTOfromDatabase(String name);
 }
