@@ -1,26 +1,29 @@
 package Entities;
-import jakarta.persistence.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
-
 public class Champion {
-
     private Long id;
-
     private String name;
-
     private String ultimateInfo;
-
     private int cost;
+    private Integer attackRange;
+    private List<Item> recommendedItemIds;
+    private List<Origin> recommendedOriginIds;
+    private List<Trait> recommendedTraitIds;
 
-    private List<Trait> traits;
+    public Champion() {}
 
-    private List<Item> items;
-
-    private List<Origin> origins;
-
-    private int attackRange;
+    public Champion(Long id, String name, String ultimateInfo, Integer cost, Integer attackRange, List<Item> recommendedItemIds, List<Origin> recommendedOriginIds, List<Trait> recommendedTraitIds) {
+        this.id = id;
+        this.name = name;
+        this.ultimateInfo = ultimateInfo;
+        this.cost = cost;
+        this.attackRange = attackRange;
+        this.recommendedItemIds = recommendedItemIds;
+        this.recommendedOriginIds = recommendedOriginIds;
+        this.recommendedTraitIds = recommendedTraitIds;
+    }
 
     public Long getId() {
         return id;
@@ -46,45 +49,56 @@ public class Champion {
         this.ultimateInfo = ultimateInfo;
     }
 
-    public int getCost() {
+    public Integer getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 
 
-    public int getAttackRange() {
+    public Integer getAttackRange() {
         return attackRange;
     }
 
-    public void setAttackRange(int attackRange) {
+    public void setAttackRange(Integer attackRange) {
         this.attackRange = attackRange;
     }
 
-    public List<Trait> getTraits() {
-        return traits;
+
+    public List<Item> getRecommendedItemIds() {
+        if (recommendedItemIds == null) {
+            recommendedItemIds = new ArrayList<>();
+        }
+        return recommendedItemIds;
     }
 
-    public void setTraits(List<Trait> traits) {
-        this.traits = traits;
+    public void setRecommendedItemIds(List<Item> recommendedItemIds) {
+        this.recommendedItemIds = recommendedItemIds;
     }
 
-    public List<Item> getItems() {
-        return items;
+
+
+    public List<Origin> getRecommendedOriginIds() {
+        if (recommendedOriginIds == null) {
+            recommendedOriginIds = new ArrayList<>();
+        }
+        return recommendedOriginIds;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void setRecommendedOriginIds(List<Origin> recommendedOriginIds) {
+        this.recommendedOriginIds = recommendedOriginIds;
     }
 
-    public List<Origin> getOrigins() {
-        return origins;
+    public List<Trait> getRecommendedTraitIds() {
+        if (recommendedTraitIds == null) {
+            recommendedTraitIds = new ArrayList<>();
+        }
+        return recommendedTraitIds;
     }
 
-    public void setOrigins(List<Origin> origins) {
-        this.origins = origins;
+    public void setRecommendedTraitIds(List<Trait> recommendedTraitIds) {
+        this.recommendedTraitIds = recommendedTraitIds;
     }
 }
-

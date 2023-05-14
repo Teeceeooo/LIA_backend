@@ -2,22 +2,18 @@ package Entities;
 
 import jakarta.persistence.*;
 
-@Entity
-@Table(name = "Item")
 public class Item {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+
     private Long id;
 
-    @Column(name = "name", nullable = false)
+
     private String name;
 
-    @Column(name = "icon")
+
     private String icon;
 
-    @Column(name = "description")
+
     private String description;
 
     public Item() {}
