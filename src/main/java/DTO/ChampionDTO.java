@@ -8,6 +8,4 @@ import java.io.Serializable;
 public class ChampionDTO implements Serializable {
     private String name;
     private String description;
-
-    //Ska även läggas hit listor på item/trait/origin..
 }
