@@ -74,6 +74,14 @@ public class OriginRepositoryImpl implements OriginRepository {
         System.out.println(rowsUpdated + " row(s) updated");
     }
 
+    @Override
+    public void deleteOriginDTOfromDatabase(String name) {
+        String sql = "DELETE FROM Origin WHERE name = ?";
+        jdbcTemplate.update(sql, name);
+        System.out.println("Deleting " + name);
+    }
+
+
     private class OriginDTORowMapper implements RowMapper<OriginDTO> {
         @Override
         public OriginDTO mapRow(ResultSet rs, int rowNum) throws SQLException {

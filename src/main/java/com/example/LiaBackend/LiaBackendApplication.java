@@ -16,14 +16,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"Repository", "Controller", "Entities","Player", "Service", "DTO"})
+@ComponentScan(basePackages = {"Repository", "Controller", "Entities","Service", "DTO"})
 public class LiaBackendApplication implements CommandLineRunner {
 
-	// Create CountryService. Replace this with CountryService, and place this in CountyService instead.
-	@Autowired
-	private CountryRepository countryRepository;
-	@Autowired
-	private ItemRepository itemRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(LiaBackendApplication.class, args);
@@ -31,8 +27,6 @@ public class LiaBackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//Country country = countryRepository.findById(3L);
-		//System.out.println(country.getName()); // Skriver ut namnet på landet med id 3
-		//countryRepository.findAll().forEach(country2 -> System.out.println(country2.getName()));
+
 	}
 }

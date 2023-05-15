@@ -32,4 +32,16 @@ public class ItemController {
     public void createItem(@RequestBody ItemDTO itemDTO) {
         itemService.createItem(itemDTO);
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/updateItem/{name}")
+    public void updateItem(@PathVariable String name, @RequestBody ItemDTO itemDTO) {
+        itemService.updateItem(name, itemDTO);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/deleteItem/{name}")
+    public void deleteItem(@PathVariable String name) {
+        itemService.deleteItem(name);
+    }
 }

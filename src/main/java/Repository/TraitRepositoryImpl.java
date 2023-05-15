@@ -1,5 +1,7 @@
 package Repository;
 
+import DTO.ItemDTO;
+import DTO.TraitDTO;
 import Entities.Trait;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +62,23 @@ public class TraitRepositoryImpl implements TraitRepository {
         String traitDTODescription = trait.getDescription();
         String sql = "INSERT INTO Trait (name, description) VALUES (?, ?)";
         jdbcTemplate.update(sql, traitDTOName, traitDTODescription);
+    }
+
+    @Override
+    public void updateTraitDTOtoDatabase(String name, TraitDTO traitDTO) {
+        String sql = "UPDATE Trait SET name = ?, description = ? WHERE name = ?";
+        System.out.println("Updating trait with name: " + name);
+        System.out.println("New trait name: " + traitDTO.getName());
+        System.out.println("New trait description: " + traitDTO.getDescription());
+        int rowsUpdated = jdbcTemplate.update(sql, traitDTO.getName(), traitDTO.getDescription(), name);
+        System.out.println(rowsUpdated + " row(s) updated");
+    }
+
+    @Override
+    public void deleteTraitDTOfromDatabase(String name) {
+        String sql = "DELETE FROM Trait WHERE name = ?";
+        jdbcTemplate.update(sql, name);
+        System.out.println("Deleting " + name);
     }
 
 

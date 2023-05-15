@@ -40,4 +40,8 @@ public class OriginService {
     public void updateOrigin(String name, OriginDTO originDTO) {
         originRepository.updateOriginDTOtoDatabase(name, originDTO);
     }
+
+    public void deleteOrigin(String name) {
+        originRepository.deleteOriginDTOfromDatabase(name);
+    }
 }

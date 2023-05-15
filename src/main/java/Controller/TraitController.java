@@ -1,5 +1,6 @@
 package Controller;
 
+import DTO.ItemDTO;
 import DTO.OriginDTO;
 import DTO.TraitDTO;
 import Entities.Trait;
@@ -31,5 +32,17 @@ public class TraitController {
     @PostMapping("/createTrait")
     public void createTrait(@RequestBody TraitDTO traitDTO) {
         traitService.createTrait(traitDTO);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/updateTrait/{name}")
+    public void updateTrait(@PathVariable String name, @RequestBody TraitDTO traitDTO) {
+        traitService.updateTrait(name, traitDTO);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/deleteTrait/{name}")
+    public void deleteTrait(@PathVariable String name) {
+        traitService.deleteTrait(name);
     }
 }

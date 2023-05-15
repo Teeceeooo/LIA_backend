@@ -1,5 +1,7 @@
 package Repository;
 
+import DTO.ItemDTO;
+import DTO.TraitDTO;
 import Entities.Origin;
 import Entities.Trait;
 import org.springframework.stereotype.Repository;
@@ -16,4 +18,7 @@ public interface TraitRepository {
     List<Trait> getTrait2(String searchText);
 
     void postTraitDTOtoDatabase(Trait trait);
+
+    void updateTraitDTOtoDatabase(String name, TraitDTO traitDTO);
+    void deleteTraitDTOfromDatabase(String name);
 }
