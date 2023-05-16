@@ -23,6 +23,10 @@ public class ChampionService {
     public Champion getSelectedChampService(Long id) {
         return championRepository.retriveChampion(id);
     }
+
+    public void deleteChampion(String name) {
+        championRepository.deleteChampionDTOfromDatabase(name);
+    }
 /*
     public void createChampion(ChampionDTO championDTO){
         Item item = new Item();

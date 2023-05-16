@@ -11,6 +11,8 @@ public interface ChampionRepository {
 
     Champion retriveChampion(Long id);
 
+    void deleteChampionDTOfromDatabase(String name);
+
 
 
 }

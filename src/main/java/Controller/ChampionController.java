@@ -27,6 +27,11 @@ public class ChampionController {
         return championService.getSelectedChampService(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping("/deleteChampion/{name}")
+    public void deleteChampion(@PathVariable String name) {
+        championService.deleteChampion(name);
+    }
 
 /*
     @CrossOrigin(origins = "http://localhost:4200")fd

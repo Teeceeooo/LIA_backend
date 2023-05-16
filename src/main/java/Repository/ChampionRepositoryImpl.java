@@ -90,15 +90,20 @@ public class ChampionRepositoryImpl implements ChampionRepository {
                         champ.getRecommendedTraitIds().add(trait);
                     }
                 }
-                System.out.println(champ.getRecommendedItemIds().get(0).getName() + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-                System.out.println(champ.getRecommendedOriginIds().get(0).getName() + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-                System.out.println(champ.getRecommendedTraitIds().get(0).getName() + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
                 return champ;
             });
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
     }
+
+    @Override
+    public void deleteChampionDTOfromDatabase(String name) {
+        String sql = "DELETE FROM Champion WHERE name = ?";
+        jdbcTemplate.update(sql, name);
+        System.out.println("Deleting " + name);
+    }
+
     private class ChampionRowMapper implements RowMapper<Champion> {
         @Override
         public Champion mapRow(ResultSet rs, int rowNum) throws SQLException {
