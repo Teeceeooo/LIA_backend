@@ -1,29 +1,24 @@
 package Entities;
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Data
 public class Champion {
     private Long id;
     private String name;
     private String ultimateInfo;
     private int cost;
     private Integer attackRange;
-    private List<Item> recommendedItemIds;
-    private List<Origin> recommendedOriginIds;
-    private List<Trait> recommendedTraitIds;
+    private List<Item> recommendedItemIds = new ArrayList<>();
+    private List<Origin> recommendedOriginIds = new ArrayList<>();
+    private List<Trait> recommendedTraitIds = new ArrayList<>();
 
-    public Champion() {}
 
-    public Champion(Long id, String name, String ultimateInfo, Integer cost, Integer attackRange, List<Item> recommendedItemIds, List<Origin> recommendedOriginIds, List<Trait> recommendedTraitIds) {
-        this.id = id;
-        this.name = name;
-        this.ultimateInfo = ultimateInfo;
-        this.cost = cost;
-        this.attackRange = attackRange;
-        this.recommendedItemIds = recommendedItemIds;
-        this.recommendedOriginIds = recommendedOriginIds;
-        this.recommendedTraitIds = recommendedTraitIds;
-    }
+
+/**
 
     public Long getId() {
         return id;
@@ -100,5 +95,5 @@ public class Champion {
 
     public void setRecommendedTraitIds(List<Trait> recommendedTraitIds) {
         this.recommendedTraitIds = recommendedTraitIds;
-    }
+    }**/
 }

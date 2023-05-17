@@ -1,7 +1,9 @@
 package Entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 public class Item {
 
 
@@ -15,7 +17,7 @@ public class Item {
 
 
     private String description;
-
+/**
     public Item() {}
 
     public Item(String name, String icon, String description) {
@@ -54,7 +56,7 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
-    }
+    }**/
 
 
 }

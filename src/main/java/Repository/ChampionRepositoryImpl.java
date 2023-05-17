@@ -3,6 +3,7 @@ import Entities.Champion;
 import Entities.Item;
 import Entities.Origin;
 import Entities.Trait;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Slf4j
 public class ChampionRepositoryImpl implements ChampionRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -25,6 +27,8 @@ public class ChampionRepositoryImpl implements ChampionRepository {
     public List<Champion> findAllChampion() {
         String sql = "SELECT * FROM Champion";
         RowMapper<Champion> rowMapper = new ChampionRowMapper();
+        log.info("hejhej");
+
         return jdbcTemplate.query(sql, rowMapper);
     }
 
@@ -77,6 +81,7 @@ public class ChampionRepositoryImpl implements ChampionRepository {
                 //Hämta alla Traits tillhörande vald Champion
                 String champTraitIds = rs.getString("recommendedTraitIds");
                 if (champTraitIds != null) {
+                    System.out.println("HÄR SKA VI INTE VA jk s jkdasasd jkads jk jklasd jlkö");
                     String[] traitValues = champTraitIds.split(",");
                     for (String traitId : traitValues) {
                         String traitSql = "SELECT * FROM Trait WHERE id = ?";
@@ -90,9 +95,6 @@ public class ChampionRepositoryImpl implements ChampionRepository {
                         champ.getRecommendedTraitIds().add(trait);
                     }
                 }
-                System.out.println(champ.getRecommendedItemIds().get(0).getName() + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-                System.out.println(champ.getRecommendedOriginIds().get(0).getName() + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-                System.out.println(champ.getRecommendedTraitIds().get(0).getName() + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
                 return champ;
             });
         } catch (EmptyResultDataAccessException e) {
