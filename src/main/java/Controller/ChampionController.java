@@ -1,5 +1,6 @@
 package Controller;
 
+import DTO.ChampionDTO;
 import DTO.ItemDTO;
 import DTO.OriginDTO;
 import Entities.Champion;
@@ -31,6 +32,12 @@ public class ChampionController {
     @DeleteMapping("/deleteChampion/{name}")
     public void deleteChampion(@PathVariable String name) {
         championService.deleteChampion(name);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/updateChampion/{name}")
+    public void updateChampion(@PathVariable String name, @RequestBody ChampionDTO championDTO) {
+        championService.updateChampion(name, championDTO);
     }
 
 /*

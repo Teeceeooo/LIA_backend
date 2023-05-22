@@ -1,5 +1,6 @@
 package Service;
 
+import DTO.ChampionDTO;
 import DTO.ItemDTO;
 import DTO.OriginDTO;
 import Entities.Champion;
@@ -22,6 +23,10 @@ public class ChampionService {
 
     public Champion getSelectedChampService(Long id) {
         return championRepository.retriveChampion(id);
+    }
+
+    public void updateChampion(String name, ChampionDTO championDTO) {
+        championRepository.updateChampionDTOtoDatabase(name, championDTO);
     }
 
     public void deleteChampion(String name) {

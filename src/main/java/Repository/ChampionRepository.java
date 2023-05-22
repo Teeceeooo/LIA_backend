@@ -1,4 +1,6 @@
 package Repository;
+import DTO.ChampionDTO;
+import DTO.ItemDTO;
 import Entities.Champion;
 import Entities.Item;
 import Entities.Origin;
@@ -10,6 +12,8 @@ public interface ChampionRepository {
     List<Champion> findAllChampion();
 
     Champion retriveChampion(Long id);
+
+    void updateChampionDTOtoDatabase(String name, ChampionDTO championDTO);
 
     void deleteChampionDTOfromDatabase(String name);
 

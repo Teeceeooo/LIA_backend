@@ -1,4 +1,6 @@
 package Repository;
+import DTO.ChampionDTO;
+import DTO.ItemDTO;
 import Entities.Champion;
 import Entities.Item;
 import Entities.Origin;
@@ -95,6 +97,11 @@ public class ChampionRepositoryImpl implements ChampionRepository {
         } catch (EmptyResultDataAccessException e) {
             return null;
         }
+    }
+
+    @Override
+    public void updateChampionDTOtoDatabase(String name, ChampionDTO championDTO) {
+        // Logic to update the champion
     }
 
     @Override
