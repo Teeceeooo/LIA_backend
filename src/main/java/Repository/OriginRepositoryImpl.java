@@ -28,6 +28,7 @@ public class OriginRepositoryImpl implements OriginRepository {
                 new OriginRowMapper()
         );
     }
+
     @Override
     public Origin findById(Long id) {
         return entityManager.find(Origin.class, id);

@@ -1,7 +1,5 @@
 package Controller;
 
-import DTO.ItemDTO;
-import DTO.OriginDTO;
 import DTO.TraitDTO;
 import Entities.Trait;
 import Service.TraitService;
@@ -16,8 +14,6 @@ public class TraitController {
     @Autowired
     private TraitService traitService;
 
-    // list DTO instead of list Item
-    // In service convert DTO
     @GetMapping("/getTraits")
     public List<Trait> getTrait() {
         return traitService.getTrait();

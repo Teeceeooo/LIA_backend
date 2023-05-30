@@ -1,16 +1,16 @@
 package Repository;
+
 import DTO.ItemDTO;
-import DTO.OriginDTO;
-import Entities.Origin;
+import Entities.Item;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import jakarta.persistence.EntityManager;
-import Entities.Item;
 
 @Repository
 public class ItemRepositoryImpl implements ItemRepository {
@@ -25,6 +25,7 @@ public class ItemRepositoryImpl implements ItemRepository {
         RowMapper<Item> rowMapper = new ItemRowMapper();
         return jdbcTemplate.query(sql, rowMapper);
     }
+
     @Override
     public List<Item> findAllItems2(String searchText) {
         String sql = "SELECT * FROM Item WHERE LOWER(name) LIKE ?";
@@ -39,6 +40,7 @@ public class ItemRepositoryImpl implements ItemRepository {
         String sql = "INSERT INTO Item (name, description) VALUES (?, ?)";
         jdbcTemplate.update(sql, itemDTOName, itemDTODescription);
     }
+
     @Override
     public void updateItemDTOtoDatabase(String name, ItemDTO itemDTO) {
         String sql = "UPDATE Item SET name = ?, description = ? WHERE name = ?";

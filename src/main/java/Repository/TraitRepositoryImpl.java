@@ -1,6 +1,5 @@
 package Repository;
 
-import DTO.ItemDTO;
 import DTO.TraitDTO;
 import Entities.Trait;
 import jakarta.persistence.EntityManager;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 @Repository
 public class TraitRepositoryImpl implements TraitRepository {
 

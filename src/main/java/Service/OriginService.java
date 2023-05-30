@@ -24,13 +24,12 @@ public class OriginService {
 
     private OriginDTO convertEntityToDto(Origin origin) {
         OriginDTO originDTO = new OriginDTO();
-       // originDTO.setId(origin.getId());
         originDTO.setName(origin.getName());
         originDTO.setDescription(origin.getDescription());
         return originDTO;
     }
 
-    public void createOrigin(OriginDTO originDTO){
+    public void createOrigin(OriginDTO originDTO) {
         Origin origin = new Origin();
         origin.setName(originDTO.getName());
         origin.setDescription(originDTO.getDescription());

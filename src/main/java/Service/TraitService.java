@@ -1,8 +1,6 @@
 package Service;
 
-import DTO.ItemDTO;
 import DTO.TraitDTO;
-import Entities.Origin;
 import Entities.Trait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +16,7 @@ public class TraitService {
     public List<Trait> getTrait() {
         return traitRepository.getTrait();
     }
+
     public List<Trait> getTrait2(String searchText) {
         return traitRepository.getTrait2(searchText);
     }
@@ -28,6 +27,7 @@ public class TraitService {
         trait.setDescription(traitDTO.getDescription());
         traitRepository.postTraitDTOtoDatabase(trait);
     }
+
     public void updateTrait(String name, TraitDTO traitDTO) {
         traitRepository.updateTraitDTOtoDatabase(name, traitDTO);
     }

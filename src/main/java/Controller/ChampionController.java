@@ -2,15 +2,14 @@ package Controller;
 
 import DTO.ChampionDTO;
 import DTO.ItemDTO;
-import DTO.OriginDTO;
 import Entities.Champion;
-import Entities.Item;
 import Service.ChampionService;
-import Service.ItemService;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/champion")
 public class ChampionController {
@@ -40,11 +39,10 @@ public class ChampionController {
         championService.updateChampion(name, championDTO);
     }
 
-/*
-    @CrossOrigin(origins = "http://localhost:4200")fd
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/createChampion")
-    public void createItem(@RequestBody ChampionDTO championDTO) {
-        itemService.createItem(championDTO);
+    public void createChampion(@RequestBody ChampionDTO championDTO) {
+        System.out.println("DU E I BÄÄÄÄÄÄÄÄCKÄEND");
+        championService.createChampion(championDTO);
     }
- */
 }

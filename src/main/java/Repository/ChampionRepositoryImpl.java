@@ -1,6 +1,6 @@
 package Repository;
+
 import DTO.ChampionDTO;
-import DTO.ItemDTO;
 import Entities.Champion;
 import Entities.Item;
 import Entities.Origin;
@@ -12,10 +12,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -24,13 +22,29 @@ public class ChampionRepositoryImpl implements ChampionRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Override
+    public void postChampionDTOtoDatabase(Champion champion) {
+        String championName = champion.getName();
+        String championUltimateInfo = champion.getUltimateInfo();
+        int championCost = champion.getCost();
+        String items = champion.getRecommendedItemIds().toString();
+        String traits = champion.getRecommendedTraitIds().toString();
+        String origins = champion.getRecommendedOriginIds().toString();
+
+                for(int i = 0; i < origins.length(); i++){
+                    System.out.println(items.chars() + " XD");
+        }
+
+        String sql = "INSERT INTO Champion (name, ultimateInfo, cost, recommendedItemIds, recommendedOriginIds, recommendedTraitIds) VALUES (?, ?, ?,?,?,?)";
+        jdbcTemplate.update(sql, championName,championUltimateInfo, championCost, items, origins, traits);
+    }
+
 
     @Override
     public List<Champion> findAllChampion() {
         String sql = "SELECT * FROM Champion";
         RowMapper<Champion> rowMapper = new ChampionRowMapper();
-        log.info("hejhej");
-
+        log.info("hejhejs");
         return jdbcTemplate.query(sql, rowMapper);
     }
 

@@ -1,11 +1,7 @@
 package Service;
 
 import DTO.ChampionDTO;
-import DTO.ItemDTO;
-import DTO.OriginDTO;
 import Entities.Champion;
-import Entities.Item;
-import Entities.Origin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,13 +28,13 @@ public class ChampionService {
     public void deleteChampion(String name) {
         championRepository.deleteChampionDTOfromDatabase(name);
     }
-/*
+
     public void createChampion(ChampionDTO championDTO){
-        Item item = new Item();
-        item.setName(championDTO.getName());
-        item.setDescription(championDTO.getDescription());
-        itemRepository.postItemDTOtoDatabase(item);
+        Champion champion = new Champion();
+        champion.setName(championDTO.getName());
+        champion.setCost(championDTO.getCost());
+        champion.setUltimateInfo(championDTO.getUltimateInfo());
+        championRepository.postChampionDTOtoDatabase(champion);
     }
 
- */
 }

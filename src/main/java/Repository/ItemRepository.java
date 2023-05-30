@@ -1,8 +1,6 @@
 package Repository;
 import DTO.ItemDTO;
-import DTO.OriginDTO;
 import Entities.Item;
-import Entities.Origin;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
