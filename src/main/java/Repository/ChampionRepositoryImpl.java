@@ -30,11 +30,6 @@ public class ChampionRepositoryImpl implements ChampionRepository {
         String items = champion.getRecommendedItemIds().toString();
         String traits = champion.getRecommendedTraitIds().toString();
         String origins = champion.getRecommendedOriginIds().toString();
-
-                for(int i = 0; i < origins.length(); i++){
-                    System.out.println(items.chars() + " XD");
-        }
-
         String sql = "INSERT INTO Champion (name, ultimateInfo, cost, recommendedItemIds, recommendedOriginIds, recommendedTraitIds) VALUES (?, ?, ?,?,?,?)";
         jdbcTemplate.update(sql, championName,championUltimateInfo, championCost, items, origins, traits);
     }
