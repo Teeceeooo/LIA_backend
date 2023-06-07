@@ -1,6 +1,7 @@
 package Controller;
 
 import DTO.OriginDTO;
+import Entities.Origin;
 import Service.OriginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,8 @@ public class OriginController {
     private OriginService originService;
 
     @GetMapping("/getOrigin")
-    public List<OriginDTO> getOrigin() {
-        return originService.getAllDTOOrigin();
+    public List<Origin> getOrigin() {
+        return originService.getOrigin();
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

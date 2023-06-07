@@ -2,6 +2,7 @@ package Repository;
 
 import DTO.OriginDTO;
 import Entities.Origin;
+import Entities.Trait;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,6 +41,13 @@ public class OriginRepositoryImpl implements OriginRepository {
                 "INSERT INTO Origin (name) VALUES (?)",
                 origin.getName()
         );
+    }
+
+    @Override
+    public List<Origin> getOrigin() {
+        String sql = "SELECT * FROM Origin";
+        RowMapper<Origin> rowMapper = new OriginRepositoryImpl.TraitRowMapper();
+        return jdbcTemplate.query(sql, rowMapper);
     }
 
     @Override
@@ -95,6 +103,16 @@ public class OriginRepositoryImpl implements OriginRepository {
     }
 
     private class OriginRowMapper implements RowMapper<Origin> {
+        @Override
+        public Origin mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Origin origin = new Origin();
+            origin.setId(rs.getLong("id"));
+            origin.setName(rs.getString("name"));
+            origin.setDescription(rs.getString("description"));
+            return origin;
+        }
+    }
+    private class TraitRowMapper implements RowMapper<Origin> {
         @Override
         public Origin mapRow(ResultSet rs, int rowNum) throws SQLException {
             Origin origin = new Origin();

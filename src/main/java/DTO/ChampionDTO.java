@@ -9,7 +9,7 @@ public class ChampionDTO implements Serializable {
     private String name;
     private String ultimateInfo;
     private int cost;
-    private String recommendedItems;
-    private String recommendedOrigins;
-    private String recommendedTraits;
+    private String recommendedItemIds;
+    private String recommendedOriginIds;
+    private String recommendedTraitIds;
 }

@@ -1,7 +1,5 @@
 package Controller;
-
 import DTO.ChampionDTO;
-
 import Entities.Champion;
 import Service.ChampionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ public class ChampionController {
     @Autowired
     private ChampionService championService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getChampions")
     public List<Champion> getChampions() {
         return championService.findAllChampions();
@@ -41,7 +40,9 @@ public class ChampionController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/createChampion")
     public void createChampion(@RequestBody ChampionDTO championDTO) {
-        System.out.println("DU E I BÄÄÄÄÄÄÄÄCKÄEND");
+        System.out.println(championDTO.getRecommendedItemIds() + " Items");
+        System.out.println(championDTO.getRecommendedTraitIds() + " Traits");
+        System.out.println(championDTO.getRecommendedOriginIds() + " Origins");
         championService.createChampion(championDTO);
     }
 }

@@ -15,12 +15,17 @@ public class OriginService {
     @Autowired
     private OriginRepository originRepository;
 
+    public List<Origin> getOrigin() {
+        return originRepository.getOrigin();
+    }
+    /*
     public List<OriginDTO> getAllDTOOrigin() {
         return originRepository.findAll()
                 .stream()
                 .map(this::convertEntityToDto)
                 .collect(Collectors.toList());
     }
+     */
 
     private OriginDTO convertEntityToDto(Origin origin) {
         OriginDTO originDTO = new OriginDTO();

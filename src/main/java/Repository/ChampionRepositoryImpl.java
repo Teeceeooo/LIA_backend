@@ -23,15 +23,16 @@ public class ChampionRepositoryImpl implements ChampionRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public void postChampionDTOtoDatabase(Champion champion) {
-        String championName = champion.getName();
-        String championUltimateInfo = champion.getUltimateInfo();
-        int championCost = champion.getCost();
-        String items = champion.getRecommendedItemIds().toString();
-        String traits = champion.getRecommendedTraitIds().toString();
-        String origins = champion.getRecommendedOriginIds().toString();
+    public void postChampionDTOtoDatabase(ChampionDTO championDTO) {
+        String championName = championDTO.getName();
+        String championUltimateInfo = championDTO.getUltimateInfo();
+        int championCost = championDTO.getCost();
+        String items = championDTO.getRecommendedItemIds();
+        String traits = championDTO.getRecommendedTraitIds();
+      //  System.out.println(traits + " <<<<");
+        String origins = championDTO.getRecommendedOriginIds();
         String sql = "INSERT INTO Champion (name, ultimateInfo, cost, recommendedItemIds, recommendedOriginIds, recommendedTraitIds) VALUES (?, ?, ?,?,?,?)";
-        jdbcTemplate.update(sql, championName,championUltimateInfo, championCost, items, origins, traits);
+        jdbcTemplate.update(sql, championName,championUltimateInfo, championCost, items,origins, traits);
     }
 
 
@@ -39,7 +40,7 @@ public class ChampionRepositoryImpl implements ChampionRepository {
     public List<Champion> findAllChampion() {
         String sql = "SELECT * FROM Champion";
         RowMapper<Champion> rowMapper = new ChampionRowMapper();
-        log.info("hejhejs");
+        //log.info("hejhejs");
         return jdbcTemplate.query(sql, rowMapper);
     }
 
@@ -92,7 +93,6 @@ public class ChampionRepositoryImpl implements ChampionRepository {
                 //Hämta alla Traits tillhörande vald Champion
                 String champTraitIds = rs.getString("recommendedTraitIds");
                 if (champTraitIds != null) {
-                    System.out.println("HÄR SKA VI INTE VA jk s jkdasasd jkads jk jklasd jlkö");
                     String[] traitValues = champTraitIds.split(",");
                     for (String traitId : traitValues) {
                         String traitSql = "SELECT * FROM Trait WHERE id = ?";

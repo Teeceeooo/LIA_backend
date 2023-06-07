@@ -17,7 +17,7 @@ public interface ChampionRepository {
 
     void deleteChampionDTOfromDatabase(String name);
 
-    void postChampionDTOtoDatabase(Champion champion);
+    void postChampionDTOtoDatabase(ChampionDTO championDTO);
 
 
 

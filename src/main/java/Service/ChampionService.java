@@ -30,11 +30,7 @@ public class ChampionService {
     }
 
     public void createChampion(ChampionDTO championDTO){
-        Champion champion = new Champion();
-        champion.setName(championDTO.getName());
-        champion.setCost(championDTO.getCost());
-        champion.setUltimateInfo(championDTO.getUltimateInfo());
-        championRepository.postChampionDTOtoDatabase(champion);
+        championRepository.postChampionDTOtoDatabase(championDTO);
     }
 
 }
