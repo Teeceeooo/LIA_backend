@@ -1,2 +1,45 @@
-Modo hockey 2023
+Frontend
+Admincrud-komponenten är för stor och gör typ allting. Hantera CRUD av Champion/Origin/etc.. i egna komponenter. Återanvänd samma formulär för create och update då dessa ändå använder samma fält.
+Ett tips allmänt är att använda FormGroup och FormControl i stället för NgModel för smidig input-validering i formulär.
+Det finns en massa generade .spec.ts filer utan riktiga tester i, ta bort dessa om det ändå inte finns test.
+Använd aldrig ”any” som typ. Det är en genväg för att IDEn ska sluta lysa rött men ni tappar en massa assistans från IDEn på köpet.
+Lägg vikt vid namngivning, det är viktigt för all kod som lever längre än 5 minuter. Och det brukar ju vara så att koden man tror lever kortast lever längst ändå.
+”admin-crud.service.ts” är lättare att läsa än ”admincrudservice.service.ts”, ”AdminCrudService” lättare än ”AdmincrudserviceService”.
+Namngivningen brukar bli bra när man använder Angular CLI, t.ex ”ng generate service services/admin-crud”, se till att köra kebab-case bara.
+I samma service finns en metod itemsTest(), som anropar itemsTest() i AdmincrudComponent, som i sin tur anropar ItemService.getAllItems().
+Vi brukar inte injecta komponenter så här, utan injecta ItemService direkt i stället.
+Behöver man göra detta ”test” på flera ställen så gör test-metoden
+en del av ItemService direkt eller skapa en utility-klass med test-metod som tar svaret från getAllItems() som argument.
+När ni använder .subscribe(), städa upp subscriptionen (sub.close()) efteråt,
+t.ex i ngOnDestroy() eller automatiskt med observable.pipe(first()).subscribe() eller firstValueFrom(observable).then()
 
+Models:
+Låt model-objekten (interfacen) husera i egna abc.interface.ts-filer. T.ex origin-dto.interface.ts.
+ChampionDTO: lagra inte multipla IDn i string, använd string[] eller number[]
+Skippa DTO i namnen
+TraitService är providedIn: root, så det finns en globalt tillgänglig instans.
+Den providas också av TraitTypeaheadComponent samt AdmincrudComponent så det blir en ytterligare instans för varje komponentinstans.
+I det här fallet märks det inte i praktiken eftersom servicen inte håller något state.
+Typeahead-komponenterna har samma selector app-typeahead
+”http://localhost:8080” förekommer 19 gånger i koden, använd gärna konstanter för strings som inte är rubriker eller ”textinnehåll” etc.
+Installera ESLint-stödpaketen för Angular och använd ESLint, man får mycket stöd där för att höja kodkvalitet. Många småsaker kan ESLint autofixa åt en.
+
+
+Backend
+Såg att retrieveChampion() returnerar null om ingen hittas. Använd hellre Optional<> som returvärde i stället för att returnera null.
+Pröva gärna att skriva tester. Vi brukar ha tester på olika lager men försöka ha täckning på hela kedjan Controller -> Service -> Repository.
+Exempelvis kan vi ha test för en ChampionController som använder ChampionServiceImpl men en mockad repository ChampionRepositoryMock.
+Då testar vi alltså Controller och Service samtidigt men med mockat Repository för konsekvent testdata.
+Använd konstanter för string-värden som namn på kolumner
+Använd något logramverk i stället för System.out
+ChampionController, OriginRepositoryImpl: Blanda inte Entity och DTO i metodsignatur retur/inparameter om det inte är mappning.
+ChampionDTO: lagra inte listor i string
+ChampionRepositoryImpl:
+Om vi tittar på retrieveChampion() så tycker jag metoden är för stor, den gör för mycket.
+ Bryt ut hämtande av Items, Origins och Traits till egna metoder. Namnge dessa så att kommentarer är överflödiga
+itemIds = getRecommendedItemIds(result, “recommendedItemIds”)
+champ.setRecommendedItemIds(itemIds)
+deleteChampionDTOfromDatabase(): skulle kunna heta bara delete() eller deleteChampion(). Det är alltid en Champion vi tar bort och ”database” säger mig ingenting.
+Skulle Champion kunna lagras även i t.ex textfil så kanske det hade funnits en annan implementation av klassen som
+hette t.ex ChampionRepositoryImplFile och denna JdbcChampionRepositoryImplJdbc, men man ärver fortfarande metoden delete() från interfacet
+delete() borde nog gå på ID och inte namn

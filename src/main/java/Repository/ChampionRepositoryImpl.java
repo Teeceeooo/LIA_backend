@@ -29,7 +29,6 @@ public class ChampionRepositoryImpl implements ChampionRepository {
         int championCost = championDTO.getCost();
         String items = championDTO.getRecommendedItemIds();
         String traits = championDTO.getRecommendedTraitIds();
-      //  System.out.println(traits + " <<<<");
         String origins = championDTO.getRecommendedOriginIds();
         String sql = "INSERT INTO Champion (name, ultimateInfo, cost, recommendedItemIds, recommendedOriginIds, recommendedTraitIds) VALUES (?, ?, ?,?,?,?)";
         jdbcTemplate.update(sql, championName,championUltimateInfo, championCost, items,origins, traits);
